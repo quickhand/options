@@ -124,9 +124,9 @@ void choicebox_item(Ewl_Widget *widget,int item)
     {
         int curchoice;
         infostruct=(choice_info_struct *)ewl_widget_data_get(widget,"choice_info");
-        curchoice=infostruct->curindex*noptions+(item-1);
+        curchoice=infostruct->curindex+(item-1);
         if(curchoice<infostruct->numchoices)
-            (infostruct->handler)(infostruct->curindex*noptions+(item-1));
+            (infostruct->handler)(curchoice);
         
     }
     else if(item==9)
