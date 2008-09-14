@@ -78,15 +78,23 @@ void choicebox_next_page(Ewl_Widget *widget)
         return;
     infostruct->curindex+=noptions;
     int i;
-    for(i=0;i<noptions;i++)
-        ewl_widget_hide(EWL_WIDGET(ewl_container_child_get(EWL_CONTAINER(vbox),i)));
+    //for(i=0;i<noptions;i++)
+    //    ewl_widget_hide(EWL_WIDGET(ewl_container_child_get(EWL_CONTAINER(vbox),i)));
     int shownum=((infostruct->numchoices-infostruct->curindex)>noptions)?noptions:(infostruct->numchoices-infostruct->curindex);
-    for(i=0;i<shownum;i++)
+    for(i=0;i<noptions;i++)
     {
         tempw1=EWL_WIDGET(ewl_container_child_get(EWL_CONTAINER(vbox),i));
-        ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",infostruct->choices[infostruct->curindex+i]);  
-        ewl_widget_show(tempw1);
-        ewl_widget_configure(tempw1);
+        if(i<shownum)
+        {
+            
+            ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",infostruct->choices[infostruct->curindex+i]);  
+
+        }
+        else
+        {
+            ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text","");
+            
+        }
     }
     
 }
@@ -101,13 +109,11 @@ void choicebox_previous_page(Ewl_Widget *widget)
     infostruct->curindex-=noptions;
     int i;
     for(i=0;i<noptions;i++)
-        ewl_widget_hide(EWL_WIDGET(ewl_container_child_get(EWL_CONTAINER(vbox),i)));
-    for(i=0;i<noptions;i++)
     {
         tempw1=EWL_WIDGET(ewl_container_child_get(EWL_CONTAINER(vbox),i));
+        
         ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",infostruct->choices[infostruct->curindex+i]);  
-        ewl_widget_show(tempw1);
-        ewl_widget_configure(tempw1);
+        
     }
 }
 
