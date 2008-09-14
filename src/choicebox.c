@@ -137,7 +137,7 @@ void choicebox_item(Ewl_Widget *widget,int item)
         curchoice=infostruct->curindex+(item-1);
         if(curchoice<infostruct->numchoices)
             (infostruct->handler)(curchoice);
-        
+        choicebox_change_selection(widget,item-1);
     }
     else if(item==9)
         choicebox_previous_page(widget);

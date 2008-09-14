@@ -28,11 +28,69 @@
 #include <Ewl.h>
 #include "choicebox.h"
 
+Ewl_Widget *options_choicebox;
+Ewl_Widget *font_family_choicebox;
+Ewl_Widget *font_size_choicebox;
+Ewl_Widget *margin_choicebox;
+Ewl_Widget *margin_setting_choicebox;
+Ewl_Widget *line_space_choicebox;
+
+
+
+void font_family_choicehandler(int choice)
+{
+    fini_choicebox(font_family_choicebox);
+}
+void font_size_choicehandler(int choice)
+{
+    fini_choicebox(font_size_choicebox);
+}
+int margin_setting=0;
+void margin_setting_choicehandler(int choice)
+{
+    fini_choicebox(margin_setting_choicebox);
+    fini_choicebox(margin_choicebox);
+}
+void margin_choicehandler(int choice)
+{
+    margin_setting=choice;
+    const char *initchoices[]={"1. 0px","2. 1px","3. 2px","4. 3px","5. 4px","6. 5px","7. 6px","8. 7px","1. 8px","2. 9px","3. 10px","4. 11px","5. 12px","6. 13px","7. 14px","8. 15px"};
+    ewl_widget_show(margin_setting_choicebox=init_choicebox(initchoices,16,margin_setting_choicehandler));
+}
+
+void line_space_choicehandler(int choice)
+{
+    fini_choicebox(line_space_choicebox);
+}
+
 void main_choicehandler(int choice)
 {
-    fprintf(stderr,"Chose option #%d",choice);
+    
+    if(choice==0)
+    {
+        const char *initchoices[]={"1. Times New Roman","2. Georgia","3. Arial"};
+        ewl_widget_show(font_family_choicebox=init_choicebox(initchoices,3,font_family_choicehandler));
+    }
+    else if(choice==1)
+    {
+        const char *initchoices[]={"1. 8pt","2. 9pt","3. 10pt","4. 11pt","5. 12pt","6. 13pt","7. 14pt"};
+        ewl_widget_show(font_size_choicebox=init_choicebox(initchoices,7,font_size_choicehandler));
+    }
+    else if(choice==2)
+    {
+        const char *initchoices[]={"1. Left Margin","2. Right Margin","3. Top Margin","4. Bottom Margin"};
+        ewl_widget_show(margin_choicebox=init_choicebox(initchoices,4,margin_choicehandler));
+    }
+    else if(choice==3)
+    {
+        const char *initchoices[]={"1. Single Spaced","2. 1.5 Spaced","3. Double Spaced","4. Triple Spaced"};
+        ewl_widget_show(line_space_choicebox=init_choicebox(initchoices,4,line_space_choicehandler));
+        
+    }
+    
     
 }
+
 int main(int argc, char *argv[])
 {
   
@@ -40,10 +98,9 @@ int main(int argc, char *argv[])
     {
         return 1;
     }
-    const char *initchoices[]={"Choice #1","Choice #2","Choice #3","Choice #4","Choice #5","Choice #6","Choice #7","Choice #8","Choice #9","Choice #10","Choice #11","Choice #12"};
+    const char *initchoices[]={"1. Font Family","2. Font Size","3. Margin","4. Line Spacing"};
+    ewl_widget_show(options_choicebox=init_choicebox(initchoices,4,main_choicehandler));
     
-    Ewl_Widget *startbox=init_choicebox(initchoices,12,main_choicehandler);
-    ewl_widget_show(startbox);
     ewl_main();
     
 
