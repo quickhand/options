@@ -1,0 +1,392 @@
+options.o options.o: options.c config.h /usr/include/stdio.h \
+  /usr/include/features.h /usr/include/sys/cdefs.h \
+  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-32.h \
+  /usr/lib/gcc/i486-linux-gnu/4.2.4/include/stddef.h \
+  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
+  /usr/lib/gcc/i486-linux-gnu/4.2.4/include/stdarg.h \
+  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h /usr/include/stdlib.h \
+  /usr/include/sys/types.h /usr/include/time.h /usr/include/endian.h \
+  /usr/include/bits/endian.h /usr/include/sys/select.h \
+  /usr/include/bits/select.h /usr/include/bits/sigset.h \
+  /usr/include/bits/time.h /usr/include/sys/sysmacros.h \
+  /usr/include/bits/pthreadtypes.h /usr/include/alloca.h \
+  /usr/local/include/ewl/Ewl.h /usr/local/include/ewl/ewl_base.h \
+  /usr/local/include/Ecore.h /usr/include/signal.h \
+  /usr/include/bits/signum.h /usr/include/bits/siginfo.h \
+  /usr/include/bits/sigaction.h /usr/include/bits/sigcontext.h \
+  /usr/include/bits/sigstack.h /usr/include/bits/sigthread.h \
+  /usr/local/include/Ecore_Data.h /usr/local/include/ewl/ewl_enums.h \
+  /usr/local/include/ewl/ewl_object.h /usr/local/include/ewl/ewl_widget.h \
+  /usr/local/include/ewl/ewl_attach.h \
+  /usr/local/include/ewl/ewl_container.h \
+  /usr/local/include/ewl/ewl_callback.h \
+  /usr/local/include/ewl/ewl_events.h /usr/local/include/ewl/ewl_misc.h \
+  /usr/local/include/ewl/ewl_config.h /usr/local/include/ewl/ewl_theme.h \
+  /usr/local/include/ewl/ewl_cell.h /usr/local/include/ewl/ewl_embed.h \
+  /usr/local/include/ewl/ewl_window.h \
+  /usr/local/include/ewl/ewl_engines.h \
+  /usr/local/include/ewl/ewl_cursor.h /usr/local/include/ewl/ewl_dnd.h \
+  /usr/local/include/ewl/ewl_io_manager.h \
+  /usr/local/include/ewl/ewl_model.h /usr/local/include/ewl/ewl_view.h \
+  /usr/local/include/ewl/ewl_box.h /usr/local/include/ewl/ewl_border.h \
+  /usr/local/include/ewl/ewl_box.h /usr/local/include/ewl/ewl_overlay.h \
+  /usr/local/include/ewl/ewl_row.h /usr/local/include/ewl/ewl_grid.h \
+  /usr/local/include/ewl/ewl_table.h /usr/local/include/ewl/ewl_cell.h \
+  /usr/local/include/ewl/ewl_grid.h /usr/local/include/ewl/ewl_label.h \
+  /usr/local/include/ewl/ewl_view.h /usr/local/include/ewl/ewl_stock.h \
+  /usr/local/include/ewl/ewl_button.h /usr/local/include/ewl/ewl_stock.h \
+  /usr/local/include/ewl/ewl_floater.h \
+  /usr/local/include/ewl/ewl_dialog.h \
+  /usr/local/include/ewl/ewl_icondialog.h \
+  /usr/local/include/ewl/ewl_message.h /usr/local/include/ewl/ewl_popup.h \
+  /usr/local/include/ewl/ewl_text.h \
+  /usr/local/include/ewl/ewl_text_trigger.h \
+  /usr/local/include/ewl/ewl_base.h /usr/local/include/ewl/ewl_text.h \
+  /usr/local/include/ewl/ewl_text_context.h \
+  /usr/local/include/ewl/ewl_entry.h \
+  /usr/local/include/ewl/ewl_colorpicker.h \
+  /usr/local/include/ewl/ewl_colordialog.h \
+  /usr/local/include/ewl/ewl_dialog.h /usr/local/include/ewl/ewl_range.h \
+  /usr/local/include/ewl/ewl_seeker.h /usr/local/include/ewl/ewl_range.h \
+  /usr/local/include/ewl/ewl_scrollbar.h \
+  /usr/local/include/ewl/ewl_spacer.h \
+  /usr/local/include/ewl/ewl_spinner.h /usr/local/include/ewl/ewl_image.h \
+  /usr/local/include/ewl/ewl_histogram.h \
+  /usr/local/include/ewl/ewl_image.h \
+  /usr/local/include/ewl/ewl_spectrum.h \
+  /usr/local/include/ewl/ewl_menu_item.h \
+  /usr/local/include/ewl/ewl_button.h /usr/local/include/ewl/ewl_menu.h \
+  /usr/local/include/ewl/ewl_menu_item.h \
+  /usr/local/include/ewl/ewl_menubar.h /usr/local/include/ewl/ewl_menu.h \
+  /usr/local/include/ewl/ewl_context_menu.h \
+  /usr/local/include/ewl/ewl_popup.h /usr/local/include/ewl/ewl_toolbar.h \
+  /usr/local/include/ewl/ewl_menubar.h /usr/local/include/ewl/ewl_check.h \
+  /usr/local/include/ewl/ewl_checkbutton.h \
+  /usr/local/include/ewl/ewl_radiobutton.h \
+  /usr/local/include/ewl/ewl_checkbutton.h \
+  /usr/local/include/ewl/ewl_separator.h \
+  /usr/local/include/ewl/ewl_calendar.h \
+  /usr/local/include/ewl/ewl_datepicker.h \
+  /usr/local/include/ewl/ewl_icon.h \
+  /usr/local/include/ewl/ewl_icon_theme.h \
+  /usr/local/include/ewl/ewl_notebook.h \
+  /usr/local/include/ewl/ewl_progressbar.h \
+  /usr/local/include/ewl/ewl_paned.h \
+  /usr/local/include/ewl/ewl_separator.h \
+  /usr/local/include/ewl/ewl_scrollpane.h \
+  /usr/local/include/ewl/ewl_statusbar.h \
+  /usr/local/include/ewl/ewl_shadow.h /usr/local/include/ewl/ewl_mvc.h \
+  /usr/local/include/ewl/ewl_model.h /usr/local/include/ewl/ewl_combo.h \
+  /usr/local/include/ewl/ewl_mvc.h /usr/local/include/ewl/ewl_tree.h \
+  /usr/local/include/ewl/ewl_row.h /usr/local/include/ewl/ewl_tree_view.h \
+  /usr/local/include/ewl/ewl_tree.h \
+  /usr/local/include/ewl/ewl_tree_view_plain.h \
+  /usr/local/include/ewl/ewl_tree_view.h \
+  /usr/local/include/ewl/ewl_tree_view_scrolled.h \
+  /usr/local/include/ewl/ewl_list.h /usr/local/include/ewl/ewl_freebox.h \
+  /usr/local/include/ewl/ewl_freebox_mvc.h \
+  /usr/local/include/ewl/ewl_filelist.h /usr/local/include/ewl/ewl_icon.h \
+  /usr/local/include/Ecore_File.h \
+  /usr/local/include/ewl/ewl_filelist_model.h \
+  /usr/local/include/ewl/ewl_filelist.h \
+  /usr/local/include/ewl/ewl_filelist_view.h \
+  /usr/local/include/ewl/ewl_filepicker.h \
+  /usr/local/include/ewl/ewl_filedialog.h \
+  /usr/local/include/ewl/ewl_media.h choicebox.h
+
+config.h:
+
+/usr/include/stdio.h:
+
+/usr/include/features.h:
+
+/usr/include/sys/cdefs.h:
+
+/usr/include/bits/wordsize.h:
+
+/usr/include/gnu/stubs.h:
+
+/usr/include/gnu/stubs-32.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.2.4/include/stddef.h:
+
+/usr/include/bits/types.h:
+
+/usr/include/bits/typesizes.h:
+
+/usr/include/libio.h:
+
+/usr/include/_G_config.h:
+
+/usr/include/wchar.h:
+
+/usr/lib/gcc/i486-linux-gnu/4.2.4/include/stdarg.h:
+
+/usr/include/bits/stdio_lim.h:
+
+/usr/include/bits/sys_errlist.h:
+
+/usr/include/bits/stdio.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/sys/types.h:
+
+/usr/include/time.h:
+
+/usr/include/endian.h:
+
+/usr/include/bits/endian.h:
+
+/usr/include/sys/select.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/bits/sigset.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/sys/sysmacros.h:
+
+/usr/include/bits/pthreadtypes.h:
+
+/usr/include/alloca.h:
+
+/usr/local/include/ewl/Ewl.h:
+
+/usr/local/include/ewl/ewl_base.h:
+
+/usr/local/include/Ecore.h:
+
+/usr/include/signal.h:
+
+/usr/include/bits/signum.h:
+
+/usr/include/bits/siginfo.h:
+
+/usr/include/bits/sigaction.h:
+
+/usr/include/bits/sigcontext.h:
+
+/usr/include/bits/sigstack.h:
+
+/usr/include/bits/sigthread.h:
+
+/usr/local/include/Ecore_Data.h:
+
+/usr/local/include/ewl/ewl_enums.h:
+
+/usr/local/include/ewl/ewl_object.h:
+
+/usr/local/include/ewl/ewl_widget.h:
+
+/usr/local/include/ewl/ewl_attach.h:
+
+/usr/local/include/ewl/ewl_container.h:
+
+/usr/local/include/ewl/ewl_callback.h:
+
+/usr/local/include/ewl/ewl_events.h:
+
+/usr/local/include/ewl/ewl_misc.h:
+
+/usr/local/include/ewl/ewl_config.h:
+
+/usr/local/include/ewl/ewl_theme.h:
+
+/usr/local/include/ewl/ewl_cell.h:
+
+/usr/local/include/ewl/ewl_embed.h:
+
+/usr/local/include/ewl/ewl_window.h:
+
+/usr/local/include/ewl/ewl_engines.h:
+
+/usr/local/include/ewl/ewl_cursor.h:
+
+/usr/local/include/ewl/ewl_dnd.h:
+
+/usr/local/include/ewl/ewl_io_manager.h:
+
+/usr/local/include/ewl/ewl_model.h:
+
+/usr/local/include/ewl/ewl_view.h:
+
+/usr/local/include/ewl/ewl_box.h:
+
+/usr/local/include/ewl/ewl_border.h:
+
+/usr/local/include/ewl/ewl_box.h:
+
+/usr/local/include/ewl/ewl_overlay.h:
+
+/usr/local/include/ewl/ewl_row.h:
+
+/usr/local/include/ewl/ewl_grid.h:
+
+/usr/local/include/ewl/ewl_table.h:
+
+/usr/local/include/ewl/ewl_cell.h:
+
+/usr/local/include/ewl/ewl_grid.h:
+
+/usr/local/include/ewl/ewl_label.h:
+
+/usr/local/include/ewl/ewl_view.h:
+
+/usr/local/include/ewl/ewl_stock.h:
+
+/usr/local/include/ewl/ewl_button.h:
+
+/usr/local/include/ewl/ewl_stock.h:
+
+/usr/local/include/ewl/ewl_floater.h:
+
+/usr/local/include/ewl/ewl_dialog.h:
+
+/usr/local/include/ewl/ewl_icondialog.h:
+
+/usr/local/include/ewl/ewl_message.h:
+
+/usr/local/include/ewl/ewl_popup.h:
+
+/usr/local/include/ewl/ewl_text.h:
+
+/usr/local/include/ewl/ewl_text_trigger.h:
+
+/usr/local/include/ewl/ewl_base.h:
+
+/usr/local/include/ewl/ewl_text.h:
+
+/usr/local/include/ewl/ewl_text_context.h:
+
+/usr/local/include/ewl/ewl_entry.h:
+
+/usr/local/include/ewl/ewl_colorpicker.h:
+
+/usr/local/include/ewl/ewl_colordialog.h:
+
+/usr/local/include/ewl/ewl_dialog.h:
+
+/usr/local/include/ewl/ewl_range.h:
+
+/usr/local/include/ewl/ewl_seeker.h:
+
+/usr/local/include/ewl/ewl_range.h:
+
+/usr/local/include/ewl/ewl_scrollbar.h:
+
+/usr/local/include/ewl/ewl_spacer.h:
+
+/usr/local/include/ewl/ewl_spinner.h:
+
+/usr/local/include/ewl/ewl_image.h:
+
+/usr/local/include/ewl/ewl_histogram.h:
+
+/usr/local/include/ewl/ewl_image.h:
+
+/usr/local/include/ewl/ewl_spectrum.h:
+
+/usr/local/include/ewl/ewl_menu_item.h:
+
+/usr/local/include/ewl/ewl_button.h:
+
+/usr/local/include/ewl/ewl_menu.h:
+
+/usr/local/include/ewl/ewl_menu_item.h:
+
+/usr/local/include/ewl/ewl_menubar.h:
+
+/usr/local/include/ewl/ewl_menu.h:
+
+/usr/local/include/ewl/ewl_context_menu.h:
+
+/usr/local/include/ewl/ewl_popup.h:
+
+/usr/local/include/ewl/ewl_toolbar.h:
+
+/usr/local/include/ewl/ewl_menubar.h:
+
+/usr/local/include/ewl/ewl_check.h:
+
+/usr/local/include/ewl/ewl_checkbutton.h:
+
+/usr/local/include/ewl/ewl_radiobutton.h:
+
+/usr/local/include/ewl/ewl_checkbutton.h:
+
+/usr/local/include/ewl/ewl_separator.h:
+
+/usr/local/include/ewl/ewl_calendar.h:
+
+/usr/local/include/ewl/ewl_datepicker.h:
+
+/usr/local/include/ewl/ewl_icon.h:
+
+/usr/local/include/ewl/ewl_icon_theme.h:
+
+/usr/local/include/ewl/ewl_notebook.h:
+
+/usr/local/include/ewl/ewl_progressbar.h:
+
+/usr/local/include/ewl/ewl_paned.h:
+
+/usr/local/include/ewl/ewl_separator.h:
+
+/usr/local/include/ewl/ewl_scrollpane.h:
+
+/usr/local/include/ewl/ewl_statusbar.h:
+
+/usr/local/include/ewl/ewl_shadow.h:
+
+/usr/local/include/ewl/ewl_mvc.h:
+
+/usr/local/include/ewl/ewl_model.h:
+
+/usr/local/include/ewl/ewl_combo.h:
+
+/usr/local/include/ewl/ewl_mvc.h:
+
+/usr/local/include/ewl/ewl_tree.h:
+
+/usr/local/include/ewl/ewl_row.h:
+
+/usr/local/include/ewl/ewl_tree_view.h:
+
+/usr/local/include/ewl/ewl_tree.h:
+
+/usr/local/include/ewl/ewl_tree_view_plain.h:
+
+/usr/local/include/ewl/ewl_tree_view.h:
+
+/usr/local/include/ewl/ewl_tree_view_scrolled.h:
+
+/usr/local/include/ewl/ewl_list.h:
+
+/usr/local/include/ewl/ewl_freebox.h:
+
+/usr/local/include/ewl/ewl_freebox_mvc.h:
+
+/usr/local/include/ewl/ewl_filelist.h:
+
+/usr/local/include/ewl/ewl_icon.h:
+
+/usr/local/include/Ecore_File.h:
+
+/usr/local/include/ewl/ewl_filelist_model.h:
+
+/usr/local/include/ewl/ewl_filelist.h:
+
+/usr/local/include/ewl/ewl_filelist_view.h:
+
+/usr/local/include/ewl/ewl_filepicker.h:
+
+/usr/local/include/ewl/ewl_filedialog.h:
+
+/usr/local/include/ewl/ewl_media.h:
+
+choicebox.h:

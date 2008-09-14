@@ -1,0 +1,7 @@
+INCLUDES = @EWL_CFLAGS@
+AM_CFLAGS=-Wall
+
+bin_PROGRAMS = options
+
+options_SOURCES = options.c
+options_LDADD = @EWL_LIBS@
