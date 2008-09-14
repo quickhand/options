@@ -94,10 +94,11 @@ void choicebox_next_page(Ewl_Widget *widget)
         else
         {
             //ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text","");
-            ewl_label_text_set(EWL_LABEL(ewl_container_child_get(EWL_CONTAINER(tempw1),0)),infostruct->choices[infostruct->curindex+i]);
+            ewl_label_text_set(EWL_LABEL(ewl_container_child_get(EWL_CONTAINER(tempw1),0)),"");
             
         }
     }
+    choicebox_change_selection(widget,0);
     
 }
 void choicebox_previous_page(Ewl_Widget *widget)
@@ -117,6 +118,7 @@ void choicebox_previous_page(Ewl_Widget *widget)
         //ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",infostruct->choices[infostruct->curindex+i]);  
         ewl_label_text_set(EWL_LABEL(ewl_container_child_get(EWL_CONTAINER(tempw1),0)),infostruct->choices[infostruct->curindex+i]);
     }
+    choicebox_change_selection(widget,0);
 }
 
 void choicebox_esc(Ewl_Widget *widget)
@@ -142,37 +144,58 @@ void choicebox_item(Ewl_Widget *widget,int item)
     else if(item==0)
         choicebox_next_page(widget);
 }
+void choicebox_change_selection(Ewl_Widget *widget,int new_navsel)
+{
+    choice_info_struct *infostruct=(choice_info_struct *)ewl_widget_data_get(widget,"choice_info");
+    Ewl_Widget *vbox=ewl_container_child_get(EWL_CONTAINER(widget),0);
+    Ewl_Widget *oldselected=ewl_container_child_get(EWL_CONTAINER(vbox),infostruct->navsel);
+    Ewl_Widget *newselected=ewl_container_child_get(EWL_CONTAINER(vbox),new_navsel);
+    
+    if(get_nav_mode()==1)
+    {
+        ewl_widget_state_set(oldselected,"unselect",EWL_STATE_PERSISTENT);
+        ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(oldselected),0),"unselect",EWL_STATE_PERSISTENT);
+        ewl_widget_state_set(newselected,"select",EWL_STATE_PERSISTENT);
+        ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(newselected),0),"select",EWL_STATE_PERSISTENT);
+    }
+    infostruct->navsel=new_navsel;
+}
+
+
 
 void choicebox_nav_up(Ewl_Widget *widget)
 {
     choice_info_struct *infostruct=(choice_info_struct *)ewl_widget_data_get(widget,"choice_info");
-    Ewl_Widget *vbox=ewl_container_child_get(EWL_CONTAINER(widget),0);
+    //Ewl_Widget *vbox=ewl_container_child_get(EWL_CONTAINER(widget),0);
     if(infostruct->navsel==0)
         return;
-    Ewl_Widget *oldselected=ewl_container_child_get(EWL_CONTAINER(vbox),infostruct->navsel);
+
+    choicebox_change_selection(widget,infostruct->navsel-1);
+    /*Ewl_Widget *oldselected=ewl_container_child_get(EWL_CONTAINER(vbox),infostruct->navsel);
     infostruct->navsel--;
     Ewl_Widget *newselected=ewl_container_child_get(EWL_CONTAINER(vbox),infostruct->navsel);
     
     ewl_widget_state_set(oldselected,"unselect",EWL_STATE_PERSISTENT);
     ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(oldselected),0),"unselect",EWL_STATE_PERSISTENT);
     ewl_widget_state_set(newselected,"select",EWL_STATE_PERSISTENT);
-    ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(newselected),0),"select",EWL_STATE_PERSISTENT);
+    ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(newselected),0),"select",EWL_STATE_PERSISTENT);*/
 }
 
 void choicebox_nav_down(Ewl_Widget *widget)
 {
     choice_info_struct *infostruct=(choice_info_struct *)ewl_widget_data_get(widget,"choice_info");
-    Ewl_Widget *vbox=ewl_container_child_get(EWL_CONTAINER(widget),0);
+    //Ewl_Widget *vbox=ewl_container_child_get(EWL_CONTAINER(widget),0);
     if(infostruct->navsel==(noptions-1) || ((infostruct->curindex+infostruct->navsel+1)>=infostruct->numchoices))
         return;
-    Ewl_Widget *oldselected=ewl_container_child_get(EWL_CONTAINER(vbox),infostruct->navsel);
+    choicebox_change_selection(widget,infostruct->navsel+1);
+    /*Ewl_Widget *oldselected=ewl_container_child_get(EWL_CONTAINER(vbox),infostruct->navsel);
     infostruct->navsel++;
     Ewl_Widget *newselected=ewl_container_child_get(EWL_CONTAINER(vbox),infostruct->navsel);
     
     ewl_widget_state_set(oldselected,"unselect",EWL_STATE_PERSISTENT);
     ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(oldselected),0),"unselect",EWL_STATE_PERSISTENT);
     ewl_widget_state_set(newselected,"select",EWL_STATE_PERSISTENT);
-    ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(newselected),0),"select",EWL_STATE_PERSISTENT);
+    ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(newselected),0),"select",EWL_STATE_PERSISTENT);*/
 }
 
 void choicebox_nav_left(Ewl_Widget *widget)
@@ -271,7 +294,7 @@ Ewl_Widget *init_choicebox(const char *choicelist[], int numchoices,choice_handl
         ewl_container_child_append(EWL_CONTAINER(tempw1),tempw2);
         ewl_theme_data_str_set(EWL_WIDGET(tempw2),"/label/file",tempstr);
         ewl_theme_data_str_set(EWL_WIDGET(tempw2),"/label/group","ewl/label/dlg_optionlabel");
-        ewl_theme_data_str_set(EWL_WIDGET(tempw2),"/label/textpart","ewl/label/dlg_optionslabel/text");
+        ewl_theme_data_str_set(EWL_WIDGET(tempw2),"/label/textpart","ewl/label/dlg_optionlabel/text");
         if(get_nav_mode()==1 && i==0)
             ewl_widget_state_set(tempw2,"select",EWL_STATE_PERSISTENT);
         ewl_label_text_set(EWL_LABEL(tempw2),info->choices[i]);
