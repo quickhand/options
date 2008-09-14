@@ -274,7 +274,7 @@ Ewl_Widget *init_choicebox(const char *choicelist[], int numchoices,choice_handl
         ewl_theme_data_str_set(EWL_WIDGET(tempw2),"/label/textpart","ewl/label/dlg_optionslabel/text");
         if(get_nav_mode()==1 && i==0)
             ewl_widget_state_set(tempw2,"select",EWL_STATE_PERSISTENT);
-        ewl_label_text_set(EWL_LABEL(tempw2),"Bla");//info->choices[i]);
+        ewl_label_text_set(EWL_LABEL(tempw2),info->choices[i]);
         ewl_widget_show(tempw2);
         
     }
