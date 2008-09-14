@@ -87,12 +87,14 @@ void choicebox_next_page(Ewl_Widget *widget)
         if(i<shownum)
         {
             
-            ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",infostruct->choices[infostruct->curindex+i]);  
+            //ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",infostruct->choices[infostruct->curindex+i]);
+            ewl_label_text_set(EWL_LABEL(ewl_container_child_get(EWL_CONTAINER(tempw1),0)),infostruct->choices[infostruct->curindex+i]);
 
         }
         else
         {
-            ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text","");
+            //ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text","");
+            ewl_label_text_set(EWL_LABEL(ewl_container_child_get(EWL_CONTAINER(tempw1),0)),infostruct->choices[infostruct->curindex+i]);
             
         }
     }
@@ -112,8 +114,8 @@ void choicebox_previous_page(Ewl_Widget *widget)
     {
         tempw1=EWL_WIDGET(ewl_container_child_get(EWL_CONTAINER(vbox),i));
         
-        ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",infostruct->choices[infostruct->curindex+i]);  
-        
+        //ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",infostruct->choices[infostruct->curindex+i]);  
+        ewl_label_text_set(EWL_LABEL(ewl_container_child_get(EWL_CONTAINER(tempw1),0)),infostruct->choices[infostruct->curindex+i]);
     }
 }
 
@@ -152,7 +154,9 @@ void choicebox_nav_up(Ewl_Widget *widget)
     Ewl_Widget *newselected=ewl_container_child_get(EWL_CONTAINER(vbox),infostruct->navsel);
     
     ewl_widget_state_set(oldselected,"unselect",EWL_STATE_PERSISTENT);
+    ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(oldselected),0),"unselect",EWL_STATE_PERSISTENT);
     ewl_widget_state_set(newselected,"select",EWL_STATE_PERSISTENT);
+    ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(newselected),0),"select",EWL_STATE_PERSISTENT);
 }
 
 void choicebox_nav_down(Ewl_Widget *widget)
@@ -166,7 +170,9 @@ void choicebox_nav_down(Ewl_Widget *widget)
     Ewl_Widget *newselected=ewl_container_child_get(EWL_CONTAINER(vbox),infostruct->navsel);
     
     ewl_widget_state_set(oldselected,"unselect",EWL_STATE_PERSISTENT);
+    ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(oldselected),0),"unselect",EWL_STATE_PERSISTENT);
     ewl_widget_state_set(newselected,"select",EWL_STATE_PERSISTENT);
+    ewl_widget_state_set(ewl_container_child_get(EWL_CONTAINER(newselected),0),"select",EWL_STATE_PERSISTENT);
 }
 
 void choicebox_nav_left(Ewl_Widget *widget)
@@ -235,7 +241,7 @@ Ewl_Widget *init_choicebox(const char *choicelist[], int numchoices,choice_handl
     set_key_handler(EWL_WIDGET(win), &choicebox_handlers);
     //ewl_attach_other_set(win,(void *)curchoice);
     ewl_callback_append ( win, EWL_CALLBACK_DELETE_WINDOW, destroy_cb, NULL );
-    ewl_widget_data_set(EWL_OBJECT(win),(void *)"choice_info",(void *)info);
+    ewl_widget_data_set(EWL_WIDGET(win),(void *)"choice_info",(void *)info);
     ewl_widget_show ( win );
     
    
@@ -246,22 +252,33 @@ Ewl_Widget *init_choicebox(const char *choicelist[], int numchoices,choice_handl
     
     int shownum=(numchoices<=noptions)?numchoices:noptions;
     char *tempstr;
+    tempstr=get_theme_file();
     for(i=0;i<shownum;i++)
     {
         
         tempw1=ewl_hbox_new();
         ewl_container_child_append(EWL_CONTAINER(vbox),tempw1);
-        tempstr=get_theme_file();
         ewl_theme_data_str_set(EWL_WIDGET(tempw1),"/hbox/file",tempstr);
-        free(tempstr);
         ewl_theme_data_str_set(EWL_WIDGET(tempw1),"/hbox/group","ewl/box/dlg_optionbox");
-        ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",info->choices[i]);
+        //ewl_widget_appearance_part_text_set(EWL_WIDGET(tempw1),"ewl/box/dlg_optionbox/text",info->choices[i]);
         ewl_object_fill_policy_set(EWL_OBJECT(tempw1),EWL_FLAG_FILL_FILL);
         if(get_nav_mode()==1 && i==0)
             ewl_widget_state_set(tempw1,"select",EWL_STATE_PERSISTENT);
         
         ewl_widget_show(tempw1);
+        
+        tempw2=ewl_label_new();
+        ewl_container_child_append(EWL_CONTAINER(tempw1),tempw2);
+        ewl_theme_data_str_set(EWL_WIDGET(tempw2),"/label/file",tempstr);
+        ewl_theme_data_str_set(EWL_WIDGET(tempw2),"/label/group","ewl/label/dlg_optionlabel");
+        ewl_theme_data_str_set(EWL_WIDGET(tempw2),"/label/textpart","ewl/label/dlg_optionslabel/text");
+        if(get_nav_mode()==1 && i==0)
+            ewl_widget_state_set(tempw2,"select",EWL_STATE_PERSISTENT);
+        ewl_label_text_set(EWL_LABEL(tempw2),"Bla");//info->choices[i]);
+        ewl_widget_show(tempw2);
+        
     }
+    free(tempstr);       
     return win;
 
 }
